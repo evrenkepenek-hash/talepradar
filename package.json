@@ -1,0 +1,55 @@
+{
+  "name": "talepradar-desktop",
+  "productName": "TalepRadar",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "Türkiye için kaynakları doğrulanabilir müşteri talebi araştırma aracı",
+  "main": "dist-electron/main.cjs",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build && node scripts/build-electron.mjs",
+    "start": "electron .",
+    "test": "node --test tests/*.test.ts",
+    "test:adapters": "node --test tests/adapters/*.test.ts",
+    "check": "tsc --noEmit",
+    "preview": "vite --host 127.0.0.1",
+    "package": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.izlek.desktop",
+    "productName": "TalepRadar",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "portable",
+      "artifactName": "TalepRadar-${version}-Windows.exe",
+      "icon": "public/brand/talepradar.ico"
+    }
+  }
+}

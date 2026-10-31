@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-electron/
+release/
+.local-data/
+.npm-cache/
+.electron-cache/
+artifacts/
+*.log
+*.sqlite*
+.env*
+!.env.example
